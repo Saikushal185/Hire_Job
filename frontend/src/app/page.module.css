@@ -1,0 +1,104 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.main {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.iconWrapper {
+  width: 120px;
+  height: 120px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  margin-bottom: 1rem;
+}
+
+.icon {
+  color: var(--primary);
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #fff, #a1a1aa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.comingSoon {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #27272a;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: #fff;
+  border: 1px solid #3f3f46;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
