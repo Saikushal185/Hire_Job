@@ -1,7 +1,25 @@
 {
-  "name": "frontend",
+  "name": "hiremind",
   "version": "0.1.0",
   "private": true,
+  "description": "AI-powered job matching platform with resume analysis",
+  "author": "HireMind Team",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Saikushal185/Hire_Job.git"
+  },
+  "keywords": [
+    "job-matching",
+    "resume-parser",
+    "nextjs",
+    "ai",
+    "career"
+  ],
+  "bugs": {
+    "url": "https://github.com/Saikushal185/Hire_Job/issues"
+  },
+  "homepage": "https://github.com/Saikushal185/Hire_Job#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
