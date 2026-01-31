@@ -2,8 +2,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 1600px;
-  margin: 0 auto;
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -19,11 +17,22 @@
   padding: 1rem;
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+    /* Reduce top/bottom padding */
+    padding-bottom: 0.25rem;
+  }
+}
+
 .headerContent {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .logoSection {
@@ -144,6 +153,89 @@
   background-color: var(--primary-hover);
 }
 
+/* Mobile Filter Toggle */
+.mobileFilterToggle {
+  display: none;
+}
+
+.filterInputs {
+  display: contents;
+}
+
+/* Mobile Search Bar */
+@media (max-width: 768px) {
+  .mobileFilterToggle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  .filterInputs {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .filterInputs.open {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .headerContent {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .searchBar {
+    flex-direction: column;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    gap: 0.5rem;
+    background-color: #18181b;
+    /* Ensure background is solid */
+  }
+
+  .searchInputGroup {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+  }
+
+  .searchDivider {
+    display: none;
+  }
+
+  .findButton {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .logoSection {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .premiumCalendar {
+    justify-self: center;
+    width: 100%;
+  }
+
+  .calendarPill {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ================= PREMIUM CALENDAR ================= */
 
 .premiumCalendar {
@@ -260,6 +352,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 0.5rem;
+    /* Reduce top padding between header and content */
+  }
 }
 
 @media (min-width: 1024px) {
@@ -284,6 +386,14 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+}
+
+.listHeaderNote {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  padding-left: 2px;
 }
 
 .listHeader h2 {
@@ -377,6 +487,29 @@
   text-align: center;
   padding: 3rem;
   color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.refreshButton {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.refreshButton:hover {
+  background-color: rgba(37, 99, 235, 0.1);
 }
 
 .skeletonCard {
@@ -396,6 +529,15 @@
   50% {
     opacity: 0.5;
   }
+}
+
+.loadingMessage {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  animation: pulse 1.5s infinite;
 }
 
 /* Job Details (Right Column) */
@@ -422,6 +564,23 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  color: white;
+  transform: translateX(-4px);
 }
 
 .detailsHeader {
@@ -489,6 +648,28 @@
   transform: scale(0.98);
 }
 
+.appliedButton {
+  background-color: #10b981;
+  /* Emerald 500 */
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.1s, background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.appliedButton:hover {
+  background-color: #059669;
+  /* Emerald 600 */
+}
+
 .saveButton {
   background-color: #27272a;
   color: white;
@@ -498,6 +679,26 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+.shareButton {
+  background-color: transparent;
+  color: #a1a1aa;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid #3f3f46;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareButton:hover {
+  background-color: #27272a;
+  color: white;
+  border-color: #52525b;
 }
 
 .saveButton:hover {
@@ -515,9 +716,13 @@
   width: 6px;
 }
 
-.detailsContent::-webkit-scrollbar-thumb {
-  background-color: #3f3f46;
-  border-radius: 3px;
+.unsaveNote {
+  font-size: 0.75rem;
+  color: #10b981;
+  /* Emerald 500 */
+  margin-top: 0.5rem;
+  font-style: italic;
+  display: block;
 }
 
 .detailsSection h3 {
@@ -531,35 +736,111 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* On smaller screens, fall back to auto-fill */
+@media (max-width: 1024px) {
+  .infoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
 }
 
 .infoBox {
-  background-color: rgba(24, 24, 27, 0.5);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--card-border);
+  background-color: rgba(39, 39, 42, 0.3);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Darker border */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  /* Space between label and value */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.infoBox:hover {
+  background-color: rgba(39, 39, 42, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific styling for the last two items (Role, Function) to make them wider on large screens */
+/* Since we have 6 items: 1,2,3,4 on Row 1. 5,6 on Row 2. */
+/* We want 5 and 6 to take half width each (span 2 columns). */
+@media (min-width: 1025px) {
+
+  .infoBox:nth-last-child(1),
+  .infoBox:nth-last-child(2) {
+    grid-column: span 2;
+  }
+}
+
+.infoBox {
+  background-color: rgba(39, 39, 42, 0.3);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Darker border */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  /* Space between label and value */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.infoBox:hover {
+  background-color: rgba(39, 39, 42, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+.boxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .infoLabel {
-  display: block;
-  font-size: 0.875rem;
-  color: #71717a;
-  margin-bottom: 0.25rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  font-weight: 600;
+  margin: 0;
+}
+
+.boxIcon {
+  color: #52525b;
+  transition: color 0.2s ease;
+}
+
+.infoBox:hover .boxIcon {
+  color: var(--primary);
 }
 
 .infoValue {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  color: #e4e4e7;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fafafa;
+  line-height: 1.3;
+  word-wrap: break-word;
+  display: block;
+  /* Ensure it takes width */
 }
 
 .descriptionText {
   color: #d4d4d8;
   line-height: 1.7;
   font-weight: 300;
+  font-size: 0.9rem;
 }
 
 .descriptionText p {
@@ -570,7 +851,7 @@
 .descriptionText h2,
 .descriptionText h3,
 .descriptionText h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: white;
   margin-top: 1.5rem;
@@ -684,6 +965,16 @@
     margin-top: 0.5rem;
   }
 
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
   /* Job Details Mobile Overlay */
   .jobDetails {
     display: none;
@@ -693,17 +984,18 @@
   .jobDetails.showOnMobile {
     display: block;
     position: fixed;
-    top: 60px;
-    /* Below navbar */
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 200;
+    z-index: 2000;
+    /* Ensure it covers the navbar */
     background-color: var(--background);
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100dvh;
     border-radius: 0;
     border: none;
+    animation: slideInRight 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .detailsContainer {
@@ -711,19 +1003,28 @@
     border-radius: 0;
   }
 
-  /* Hide job list when details are open if desired, but overlay is easier */
-
+  /* Mobile Sticky Back Button */
   .backButton {
-    display: inline-flex;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(9, 9, 11, 0.95);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 1px solid var(--card-border);
+    font-weight: 600;
+    color: white;
+    font-size: 1rem;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    gap: 0.75rem;
+  }
+
+  /* Reset margin inside header since we moved it above or styled it to be flush */
+  .detailsHeader {
+    padding-top: 1rem;
   }
 }
 
@@ -769,4 +1070,38 @@
 
 .footerLinks a:hover {
   color: white;
+}
+
+/* Toast Notification */
+.toast {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  transform: translateY(0);
+  background-color: #18181b;
+  border: 1px solid #3f3f46;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 1000;
+  white-space: nowrap;
+  animation: fadeIn 0.15s ease-out forwards;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
