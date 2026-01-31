@@ -51,7 +51,8 @@ except:
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
 
-def extract_contact_info(text):
+def extract_contact_info(text: str) -> dict[str, str | None]:
+    """Extract email and phone from resume text."""
     email = re.findall(r'[\w\.-]+@[\w\.-]+', text)
     phone = re.findall(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})', text)
     return {
@@ -59,10 +60,17 @@ def extract_contact_info(text):
         "phone": phone[0] if phone else None
     }
 
-def extract_keywords_basic(text, n=15):
+def extract_keywords_basic(text: str, n: int = 15) -> list[str]:
     """
     Fallback keyword extraction using frequency analysis.
     Exclude common english stop words.
+    
+    Args:
+        text: Resume text to extract keywords from
+        n: Maximum number of keywords to extract
+    
+    Returns:
+        List of extracted keywords
     """
     try:
         # Use simple CountVectorizer to find top frequent words that are not stop words
@@ -70,14 +78,24 @@ def extract_keywords_basic(text, n=15):
         X = vectorizer.fit_transform([text])
         keywords = vectorizer.get_feature_names_out()
         return list(keywords)
-    except:
+    except Exception as e:
+        logger.warning(f"Keyword extraction failed: {e}")
         return []
 
-def calculate_rule_based_score(text, resume_data):
-    """Fallback rule-based scoring"""
-    score = 0
-    feedback = []
-    breakdown = {"contact_info": 0, "structure": 0, "content_length": 0, "keywords": 0}
+def calculate_rule_based_score(text: str, resume_data: dict[str, str | None]) -> dict:
+    """
+    Calculate resume score using rule-based heuristics.
+    
+    Args:
+        text: Resume text content
+        resume_data: Extracted contact information
+    
+    Returns:
+        Dictionary with total_score, breakdown, and feedback
+    """
+    score: int = 0
+    feedback: list[str] = []
+    breakdown: dict[str, int] = {"contact_info": 0, "structure": 0, "content_length": 0, "keywords": 0}
 
     # 1. Contact Info (20 pts)
     if resume_data["email"]:
