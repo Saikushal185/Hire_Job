@@ -1,0 +1,149 @@
+.container {
+    min-height: 100vh;
+    padding: 0;
+    /* Let layout handle padding */
+    background: #000000;
+    color: #f4f4f5;
+    font-family: 'Inter', sans-serif;
+}
+
+.header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #fff, #a1a1aa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #a1a1aa;
+    font-size: 1rem;
+}
+
+/* Table Styles */
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    background: #121212;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+}
+
+.table th,
+.table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #27272a;
+    color: #e4e4e7;
+}
+
+.table th {
+    background: #18181b;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #a1a1aa;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.table th:hover {
+    color: #ffffff;
+}
+
+.table th .headerContent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sortIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+}
+
+.table th:hover .sortIcon {
+    opacity: 1;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Cell Specific Styles */
+.emailCell {
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.dateCell {
+    white-space: nowrap;
+    color: #71717a;
+    font-family: monospace;
+}
+
+/* Role Badges */
+.roleBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.roleAdmin {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.roleUser {
+    background: rgba(255, 255, 255, 0.1);
+    color: #d4d4d8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    color: #94a3b8;
+}
+
+.empty {
+    text-align: center;
+    color: #64748b;
+    margin-top: 4rem;
+    font-size: 1.1rem;
+}
