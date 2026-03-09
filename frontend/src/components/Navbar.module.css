@@ -1,0 +1,389 @@
+/* Navbar Container */
+.navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    width: 90%;
+    max-width: 1400px;
+}
+
+.navContainer {
+    width: 100%;
+    height: 72px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #050505;
+    /* Deep black */
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    /* Blue 600 glow */
+    border-radius: 9999px;
+    /* Pill shape */
+    box-shadow: 0 0 20px -5px rgba(37, 99, 235, 0.2), 0 10px 40px -10px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    margin-right: 3rem;
+    white-space: nowrap;
+}
+
+.logo:hover {
+    opacity: 0.9;
+}
+
+.logo span {
+    background: linear-gradient(to right, #93c5fd, #60a5fa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Links (Center) */
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    height: 100%;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #94a3b8;
+    /* Slate 400 */
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.navLink:hover {
+    color: #ffffff;
+}
+
+.navLink.active {
+    color: #ffffff;
+}
+
+/* Feedback Widget as a Link */
+.feedbackLink :global(button) {
+    background: transparent !important;
+    border: none !important;
+    padding: 0.5rem 0 !important;
+    color: #94a3b8 !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    display: block !important;
+}
+
+.feedbackLink :global(button):hover {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+/* Right Side Actions */
+.rightActions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: auto;
+}
+
+.feedbackWrapper {
+    /* If we move it to links, this might be empty or removed, but keeping for mobile/fallback */
+    display: flex;
+    align-items: center;
+}
+
+/* User Menu (The "3 Lines" / Hamburger in place of profile) */
+.userMenuTrigger {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    /* Squircle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.userMenuTrigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.userMenuTrigger.open {
+    background: rgba(37, 99, 235, 0.2);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Dropdown Menus */
+.dropdownMenu {
+    position: absolute;
+    top: calc(100% + 1rem);
+    /* Increased spacing */
+    right: 0;
+    width: 260px;
+    /* Slightly wider */
+    background: rgba(24, 24, 27, 0.95);
+    /* Deeper background */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    /* More rounded */
+    padding: 0.5rem;
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.5),
+        0 4px 6px -2px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    /* Inner rim light */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    animation: slideIn 0.2s cubic-bezier(0.2, 0, 0.13, 1.5);
+    /* Bouncy slide-in */
+    transform-origin: top right;
+    overflow: hidden;
+    /* For inner borders */
+}
+
+.savedDropdown {
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    width: 220px;
+    top: calc(100% + 0.5rem);
+    transform-origin: top center;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdownItem:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    transform: translateX(4px);
+    /* Subtle shift */
+}
+
+.dropdownItem:active {
+    transform: scale(0.98) translateX(4px);
+}
+
+.dropdownItem.danger:hover {
+    background: rgba(220, 38, 38, 0.15);
+    color: #f87171;
+}
+
+.dropdownDivider {
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    margin: 0.5rem 0;
+}
+
+.userInfo {
+    padding: 1rem;
+    margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+    /* Extend to edges */
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.userInfo small {
+    color: #71717a;
+    /* Zinc 500 */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.userInfo strong {
+    display: block;
+    color: white;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+
+/* Auth Buttons (Logged Out) */
+.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loginLink {
+    color: #3b82f6;
+    /* Vibrant Blue */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.loginLink:hover {
+    color: #60a5fa;
+    /* Lighter on hover */
+}
+
+.signupButton {
+    background: #3b82f6;
+    /* Vibrant Blue */
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.signupButton:hover {
+    transform: translateY(-1px);
+    background: #2563eb;
+    /* Darker on hover */
+    box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.4);
+}
+
+/* Mobile Toggle */
+.mobileMenuToggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+
+    .navLinks,
+    .rightActions {
+        display: none;
+    }
+
+    .mobileMenuToggle {
+        display: block;
+    }
+}
+
+/* Mobile Menu Overlay */
+.mobileMenu {
+    position: fixed;
+    top: calc(1.5rem + 70px + 0.5rem);
+    /* Align below the floating island */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+    height: auto;
+    max-height: calc(100vh - 120px);
+    background: rgba(9, 9, 11, 0.95);
+    backdrop-filter: blur(24px);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.mobileLink {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #a1a1aa;
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobileLink.active {
+    color: white;
+    color: var(--primary);
+}
+
+.mobileAuth {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+.mobileAuth button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logoutBtnMobile {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
